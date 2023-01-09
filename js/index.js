@@ -36,7 +36,7 @@ function exchange(currencies){
 }
 function getCurrencyList(e){
     e.preventDefault();
-    const urlAddress = 'http://api.nbp.pl/api/exchangerates/tables/a/?format=json/';
+    const urlAddress = 'https://api.nbp.pl/api/exchangerates/tables/a/?format=json/';
     document.querySelector('.loader').classList.remove('invisible');
     fetch(urlAddress)
     .then((response) => response.json())
