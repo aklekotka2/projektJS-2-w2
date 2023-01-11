@@ -33,9 +33,16 @@ label{
     width: 100%;
 }
 .err{
-    display: block;
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    display: inline-block;
     color: red;
     width: 100%;
+}
+.api-err{
+    grid-column: 1/-1;
+    color: red;
 }
 .pos-center{
     width: 960px;
@@ -84,6 +91,9 @@ h1{
     padding: 50px 0;
     border-bottom: 3px solid var(--navy);
     justify-content: space-between;
+}
+form > div{
+    position: relative;
 }
 input, select, button{
     height: 30px;

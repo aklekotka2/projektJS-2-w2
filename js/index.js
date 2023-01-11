@@ -5,43 +5,52 @@ let selectedCurrency;
 let currencies = [];
 let exchangeValue;
 const resultArea = document.querySelector('#result span');
+const errArea = document.querySelector('.err');
+const apiErrArea = document.querySelector('.api-err');
+
+function validate(val){
+    if(val < 0){
+        errArea.innerText = 'Wartość musi być dodatnia.';
+        return false;
+    }
+    errArea.innerText = '';
+    return true;
+}
 
 function createList(currency){
-    console.log(currency);
+    const requiredCurrencies = ['USD', 'EUR', 'CHF']
     for(let i = 0; i < currency.length; i++){
-        if(currency[i].code ==='USD'){
-            currencies.push(currency[i]);
-        }else if(currency[i].code ==='EUR'){
-            currencies.push(currency[i]);
-        }else if(currency[i].code ==='CHF'){
-            currencies.push(currency[i]);
-        }
+	        if(requiredCurrencies.includes(currency[i].code)){
+	            currencies.push(currency[i]);
+	        }
     }
-    console.log(currencies);
     exchange(currencies);
 }
 
-function exchange(currencies){
-    
-    selectedCurrency = select.options[select.selectedIndex].value;
-    console.log('exchange '+ currencies);
-    currencies.find((currency) => {
-        if (currency.code === selectedCurrency) {
-          exchangeValue = currency.mid * input.value;
-          console.log('exchangeValue ' +exchangeValue);
-        }
-    });
-    console.log(exchangeValue);
-    resultArea.innerText = Number(Math.round(exchangeValue + 'e+2') + 'e-2');;
+function exchange(currencies){   
+    if( validate(input.value)){
+        selectedCurrency = select.options[select.selectedIndex].value;
+        currencies.find((currency) => {
+            if (currency.code === selectedCurrency) {
+              exchangeValue = currency.mid * input.value;
+            }
+        });
+        resultArea.innerText = exchangeValue.toFixed(2);
+    }
+    else{
+        resultArea.innerText = 0;
+    }  
 }
+
 function getCurrencyList(e){
     e.preventDefault();
     const urlAddress = 'https://api.nbp.pl/api/exchangerates/tables/a/?format=json/';
     document.querySelector('.loader').classList.remove('invisible');
     fetch(urlAddress)
     .then((response) => response.json())
-    .then((data) => createList(data[0].rates));
-    setTimeout(()=>{ document.querySelector('.loader').classList.add('invisible'); }, 3000 ); 
+    .then((data) => createList(data[0].rates))
+    .catch(error => apiErrArea.innerText = `Nastąpił błąd: ${error}`)
+    .finally(document.querySelector('.loader').classList.add('invisible')); 
 }
 
 button.addEventListener('click', (e) => getCurrencyList(e));
