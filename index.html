@@ -1,53 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Przelicznik walut - projekt JS</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style/reset.css">
-    <link rel="stylesheet" href="style/style.css">
-</head>
-<body>
-    <div class="loader invisible">
-        <div class="points-wrapper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-    <header>
-        <div class="pos-center">
-            <div class="logo"></div>
-            <h1>Przelicznik walut</h1>
-        </div>
-    </header>
-    <main>
-        <div class="pos-center">
-            <section class="changeCurrecy">
-                <form action="">
-                    <div>
-                        <label for = "amount">Kwota</label>
-                        <input type="number" name="amount" id="amount">
-                        <div class="err"></div>
-                    </div>
-                    <div>
-                        <label for="currency">Waluta</label>
-                        <select name="currency" id="currency">
-                            <option value="EUR">EUR</option>
-                            <option value="USD">USD</option>
-                            <option value="CHF">CHF</option>
-                        </select>
-                    </div>
-                    <button type="submit" id="getCurrencies">Przelicz</button>
-                </form>
-                <h2 id="result">to jest:   <span></span> PLN</h2>
-            </section>
-            <div class="api-err"></div>
-        </div>
-    </main>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="js/index.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Przelicznik walut - projekt JS</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style/reset.css" />
+		<link rel="stylesheet" href="style/style.css" />
+	</head>
+	<body>
+		<div class="loader invisible">
+			<div class="points-wrapper">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+		<header>
+			<div class="pos-center">
+				<div class="logo"></div>
+				<h1>Przelicznik walut</h1>
+			</div>
+		</header>
+		<main>
+			<div class="pos-center">
+				<section class="changeCurrecy">
+					<form action="">
+						<div>
+							<label for="amount">Kwota</label>
+							<input type="number" name="amount" id="amount" />
+							<div class="err"></div>
+						</div>
+						<div>
+							<label for="currency">Waluta</label>
+							<select name="currency" id="currency">
+								<option value="EUR">EUR</option>
+								<option value="USD">USD</option>
+								<option value="CHF">CHF</option>
+							</select>
+						</div>
+						<button type="submit" id="getCurrencies">
+							Przelicz
+						</button>
+					</form>
+					<h2 id="result">to jest: <span></span> PLN</h2>
+				</section>
+				<div class="api-err"></div>
+			</div>
+		</main>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="js/index.js"></script>
+	</body>
 </html>
